@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "meta_missing"
   gem.homepage = "http://github.com/evansenter/meta_missing"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Handle method_missing with ease}
+  gem.description = %Q{A small library to allow metaprogramming via method_missing without dealing with regular expression hell.}
   gem.email = "evansenter@gmail.com"
   gem.authors = ["Evan Senter"]
   # dependencies defined in Gemfile
