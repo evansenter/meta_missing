@@ -39,14 +39,14 @@ module MetaMissing
           def block_given?; true; end
         end
         
-        MetaMissing.bind(handler[:block], self)[name, *args, &block].tap do
+        MetaMissing.bind(handler[:block], self)[handler[:regexp], name, *args, &block].tap do
           class_eval do
             alias_method :block_given?, :orig_block_given?
             remove_method :orig_block_given?
           end
         end
       else
-        instance_exec(name, *args, &handler[:block])
+        instance_exec(handler[:regexp], name, *args, &handler[:block])
       end
     else super end
   end

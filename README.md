@@ -5,8 +5,8 @@
     class AnimalFarm
       prepend MetaMissing
       
-      handle_methods_like(/pony/) do |name, *args, &block|
-        [self, name, args, block_given?, block, block[]]
+      handle_methods_like(/pony/) do |regexp, name, *args, &block|
+        [self, regexp, name, args, block_given?, block, block[]]
       end
       
       handle_methods_like(/kitties/) do
@@ -19,7 +19,7 @@
     > AnimalFarm.new.mecha_pony(1, 2, 3) { 4 }
     > AnimalFarm.new.kitties
     
-    #=> [#<AnimalFarm:0x007fce22b69188>, :mecha_pony, [1, 2, 3], true, #<Proc:0x007fce22b69110@(pry)>, 4]
+    #=> [#<AnimalFarm:0x007f9a3f131fd8>, /pony/, :mecha_pony, [1, 2, 3], true, #<Proc:0x007f9a3f131f60@(pry)>, 4]
     #=> ["Meow meow meow", false]
     
 ### Contrast this with:
