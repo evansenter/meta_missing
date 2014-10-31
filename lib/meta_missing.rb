@@ -33,20 +33,22 @@ module MetaMissing
   
   def method_missing(name, *args, &block)
     if handler = method_handlers.find { |handler| handler[:regexp] =~ name.to_s }
+      match = name.to_s.match(handler[:regexp])
+      
       if block_given?
         class_eval do
           alias_method :orig_block_given?, :block_given?
           def block_given?; true; end
         end
         
-        MetaMissing.bind(handler[:block], self)[handler[:regexp], name, *args, &block].tap do
+        MetaMissing.bind(handler[:block], self)[match, name, *args, &block].tap do
           class_eval do
             alias_method :block_given?, :orig_block_given?
             remove_method :orig_block_given?
           end
         end
       else
-        instance_exec(handler[:regexp], name, *args, &handler[:block])
+        instance_exec(match, name, *args, &handler[:block])
       end
     else super end
   end

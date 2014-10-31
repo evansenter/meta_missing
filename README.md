@@ -19,7 +19,7 @@
     > AnimalFarm.new.mecha_pony(1, 2, 3) { 4 }
     > AnimalFarm.new.kitties
     
-    #=> [#<AnimalFarm:0x007f9a3f131fd8>, /pony/, :mecha_pony, [1, 2, 3], true, #<Proc:0x007f9a3f131f60@(pry)>, 4]
+    #=> [#<AnimalFarm:0x007fbfc08c5bb8>, #<MatchData "pony">, :mecha_pony, [1, 2, 3], true, #<Proc:0x007fbfc08c5b40@(pry)>, 4]
     #=> ["Meow meow meow", false]
     
 ### Contrast this with:
